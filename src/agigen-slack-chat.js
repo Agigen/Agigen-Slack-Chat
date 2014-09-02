@@ -4,19 +4,22 @@
     window.slackChat = function(args) {
         var self = this,
             channel = args.channel,
-            slack_url = 'https://'+ args.team +'.slack.com/services/hooks/incoming-webhook?token=' + args.token;
+            emoji = args.emoji,
+            image = args.image,
+            slack_request_url = 'https://'+ args.team +'.slack.com/services/hooks/incoming-webhook?token=' + args.token;
 
         self.sendMessage = function(name, text) {
-            if(name.trim() && text.trim()) {
+            if(name && name.trim() && text && text.trim()) {
                 var data = {
                     'text': text,
                     'username': name,
-                    'icon_emoji': ':neckbeard:',
-                    'channel': channel
+                    'channel': channel,
+                    'icon_url': image ? image : '',
+                    'icon_emoji': emoji ? emoji : (image ? '' : ':neckbeard:')
                 };
-                var xhr = new XMLHttpRequest();
-                xhr.open('POST', slack_url, true);
 
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', slack_request_url, true);
                 xhr.send(JSON.stringify(data));
 
                 xhr.onreadystatechange = function() {
