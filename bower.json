@@ -1,0 +1,14 @@
+{
+  "name": "agigen-slack-chat",
+  "version": "0.0.1",
+  "homepage": "https://github.com/Agigen/agigen-slack-chat",
+  "main": "src/agigen-slack-chat.js",
+  "authors": [
+    "viktorgardart <viktor.gardart@agigen.se>"
+  ],
+  "ignore": [
+    "index.html"
+  ],
+  "dependencies": {},
+  "devDependencies": {}
+}
